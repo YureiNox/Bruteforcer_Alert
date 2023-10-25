@@ -12,7 +12,7 @@ detect failed connection and prevent you with the ip of the personne who try to 
 
 
 
-2- Modify the .bat file to add YOUR path to the bruteforcealerte.ps1
+2- Modify the .bat file to ADD YOUR PATH TO THE BRUTEFORCEALERT.PS1
 ![Capture d'écran 2023-10-25 210430](https://github.com/Yudaol/Bruteforcer_Alert/assets/92973701/af9555da-e4f2-49fb-b71e-4dd9ba65c87c)
 
 
