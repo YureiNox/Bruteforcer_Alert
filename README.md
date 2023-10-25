@@ -8,7 +8,7 @@ detect failed connection and prevent you with the ip of the personne who try to 
 
 # How to set up (a little bit long)
 
-1- download and extract tak the bruteforcealert.ps1 and the bruteforcealert.bat
+1- download and extract tak the bruteforcealert.ps1 and the bruteforcealert.bat bruteforcealert.ps1 is on ps1_file/English or French
 
 
 
