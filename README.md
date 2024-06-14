@@ -1,10 +1,10 @@
 # Bruteforcer Alert
 
-Detect failed connections and notify you with the IP of the person attempting to hack/connect to your PC. This script only works on Windows.
+Detect failed connection attempts and get notified with the IP address of the person trying to hack/connect to your PC. This script works only on Windows.
 
-![Capture d'écran 2023-10-25 205813](https://github.com/Yudaol/Bruteforcer_Alert/assets/92973701/3e607aa6-547b-4b40-9066-1641330c7e6b)
+![Screenshot 2023-10-25 205813](https://github.com/Yudaol/Bruteforcer_Alert/assets/92973701/3e607aa6-547b-4b40-9066-1641330c7e6b)
 
-## How to Set Up (A Little Bit Long)
+## How to Set Up (A Bit Long)
 
 ### Step 1: Download and Extract Files
 
@@ -19,9 +19,9 @@ Detect failed connections and notify you with the IP of the person attempting to
 
 ### Step 3: Configure Local Group Policy
 
-1. Open Local Group Policy Editor (Win + R > `gpedit.msc`).
+1. Open the Local Group Policy Editor (Win + R > `gpedit.msc`).
 2. Navigate to: `Windows settings > Security settings > Advanced Audit Policy Configuration > System Audit Policies > Logon/Logoff`.
-3. Double-click on `Audit Logon` and configure as follows:
+3. Double-click on `Audit Logon` and configure it as follows:
     - Select "Configure the following audit events:"
     - Check both "Success" and "Failure".
 
@@ -38,7 +38,7 @@ Detect failed connections and notify you with the IP of the person attempting to
 #### Triggers Tab
 
 1. Click "New".
-2. Configure as follows:
+2. Configure it as follows:
     - Begin the task: "On an event".
     - Log: "Security".
     - Source: "Microsoft Windows security auditing".
@@ -49,7 +49,7 @@ Detect failed connections and notify you with the IP of the person attempting to
 #### Actions Tab
 
 1. Click "New".
-2. Configure as follows:
+2. Configure it as follows:
     - Action: "Start a program".
     - Program/script: Browse to `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`.
     - Add arguments: Add the path to your `bruteforcealert.bat` file.
