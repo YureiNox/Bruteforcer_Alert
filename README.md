@@ -1,55 +1,68 @@
-# Bruteforcer_Alert
-detect failed connection and prevent you with the ip of the personne who try to hack/connect to your pc only work on windows
+# Bruteforcer Alert
 
-
+Detect failed connections and notify you with the IP of the person attempting to hack/connect to your PC. This script only works on Windows.
 
 ![Capture d'écran 2023-10-25 205813](https://github.com/Yudaol/Bruteforcer_Alert/assets/92973701/3e607aa6-547b-4b40-9066-1641330c7e6b)
 
+## How to Set Up (A Little Bit Long)
 
-# How to set up (a little bit long)
+### Step 1: Download and Extract Files
 
-1- download and extract tak the bruteforcealert.ps1 and the bruteforcealert.bat bruteforcealert.ps1 is on ps1_file/English or French
+1. Download and extract the `Bruteforcer_Alert` package.
+2. Locate `bruteforcealert.ps1` and `bruteforcealert.bat` in the `ps1_file/English` or `ps1_file/French` directory.
 
+### Step 2: Modify the .bat File
 
+1. Edit the `bruteforcealert.bat` file to add the path to your `bruteforcealert.ps1` file.
+   
+   ![Modify .bat file](https://github.com/Yudaol/Bruteforcer_Alert/assets/92973701/af9555da-e4f2-49fb-b71e-4dd9ba65c87c)
 
-2- Modify the .bat file to ADD YOUR PATH TO THE BRUTEFORCEALERT.PS1
-![Capture d'écran 2023-10-25 210430](https://github.com/Yudaol/Bruteforcer_Alert/assets/92973701/af9555da-e4f2-49fb-b71e-4dd9ba65c87c)
+### Step 3: Configure Local Group Policy
 
+1. Open Local Group Policy Editor (Win + R > `gpedit.msc`).
+2. Navigate to: `Windows settings > Security settings > Advanced Audit Policy Configuration > System Audit Policies > Logon/Logoff`.
+3. Double-click on `Audit Logon` and configure as follows:
+    - Select "Configure the following audit events:"
+    - Check both "Success" and "Failure".
 
+### Step 4: Set Up Task Scheduler
 
-3- To the programme to work you need to activate some kind of stuff 
+1. Open Task Scheduler and click on "Create Task".
+2. Follow the steps below to configure the task:
 
-3.1- go to Local Group Policy Editor or something like this (win+r > gpedit.msc) and go to : `Windows settings > Sécurity setings > Advence Audit Policy Configuration > Sytem Audit Policy - ....` > presse on logon/logoff
+#### General Tab
 
-3.2- when you are in logon/logoff double-click on audit logon and select first the first case Configure the following.... and then select the two other case Success AND Failur
+![General Tab](https://github.com/Yudaol/Bruteforcer_Alert/assets/92973701/7580eb5d-8c6d-4fde-ab41-66a37fad0824)
+- Ensure the name is filled in both circled areas.
 
+#### Triggers Tab
 
+1. Click "New".
+2. Configure as follows:
+    - Begin the task: "On an event".
+    - Log: "Security".
+    - Source: "Microsoft Windows security auditing".
+    - Event ID: `4625`.
 
-4- now go to task scheduler click on create task. From now on the "pop up" make every thing that look like the picture down here
+   ![Triggers Tab](https://github.com/Yudaol/Bruteforcer_Alert/assets/92973701/b9d15676-7fb1-4cb3-8952-1be568cb1c21)
 
-4.1-
-![Capture d'écran 2023-10-25 211614](https://github.com/Yudaol/Bruteforcer_Alert/assets/92973701/7580eb5d-8c6d-4fde-ab41-66a37fad0824)
-sorry mine it's in french but it's always the same 
-`AND YOU DO NOT NEED TO CHANGE ANYTHING JUSTE PUT THE NAME IN THE TWO PLACE CIRCLE IN THE PICTURE`
+#### Actions Tab
 
-4.2-
-![Capture d'écran 2023-10-25 211707](https://github.com/Yudaol/Bruteforcer_Alert/assets/92973701/b9d15676-7fb1-4cb3-8952-1be568cb1c21)
-SORRY i do a mistake you nead to presse on new at first on the left windows in the picture ;)... 
-then in the list select on event on the first line on the seconde line select security then microsoft windows security auditing then on event id put ```4625```
+1. Click "New".
+2. Configure as follows:
+    - Action: "Start a program".
+    - Program/script: Browse to `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`.
+    - Add arguments: Add the path to your `bruteforcealert.bat` file.
 
-4.3-
-![Capture d'écran 2023-10-25 211826](https://github.com/Yudaol/Bruteforcer_Alert/assets/92973701/d1403dbe-8b8d-43f3-adad-cb19d43ce1bf)
-SORRY i make for the second time a mistake you need to create on so press on new now i will do it in not 1,2,3 but 3,1,2
-so 
+   ![Actions Tab](https://github.com/Yudaol/Bruteforcer_Alert/assets/92973701/d1403dbe-8b8d-43f3-adad-cb19d43ce1bf)
 
-3- select in the list Start an programme on anything that start a programme then 
+### Testing
 
-1- click on browse and go to the powershell path `C:\Windows\System32\WindowsPowerShell\v1.0 and select powershell.exe`
+To test the setup:
+1. Enable Remote Desktop Connection in settings.
+2. From another PC, use the Remote Desktop Connection app to attempt a connection with the correct username but an incorrect password.
+3. Both PCs must be on the same network.
 
-2- put your path to the bruteforcealert.bat BE CAREFUL THE .BAT FILE NOT THE .PS1 I AM WORKING ON A MORE SIMPLE VERSION WHERE YOU DO NOT NEED TO PRESS EVERYTIME ON THE ADMIN POP UP when you put your path to the bat file presse ok and another time ok and restart to complete all your stuff
+### Enjoy!
 
-IF YOU WANNA TEST THIS BAD STUFF ACTIVATE remote Desktop connection ON SETTINGS AND SELECT TO ACTIVATE THIS AND ON AN OTHER PC GO TO remote Desktop connection APP AND PASTE THE IP OF YOUR COMPUTER THAT YOU NEED TO TEST AND PUT THE GOOD USERNAME BUT A WRONG PASSWORD AND YOU SHOULD SEE THE POP UP 
-TO TEST THIS STUFF BOTH OF THE PC NEED TO BE ON THE SAME NETWORK
-
-Enjoy !!
- 
+If you encounter any issues or have suggestions for improvement, feel free to open an issue on GitHub.
