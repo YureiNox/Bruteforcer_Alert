@@ -56,6 +56,20 @@ Detect failed connections and notify you with the IP of the person attempting to
 
    ![Actions Tab](https://github.com/Yudaol/Bruteforcer_Alert/assets/92973701/d1403dbe-8b8d-43f3-adad-cb19d43ce1bf)
 
+#### Script Activation
+
+1. Right click on any of the file go to properties and select unlock
+   
+2. do it with the other one
+
+3. open powershell as admin
+
+4. then type:       and press the asked key for yes
+```
+Set-ExecutionPolicy RemoteSigned
+```
+
+
 ### Testing
 
 To test the setup:
